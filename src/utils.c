@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsanger <jsanger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/24 08:23:54 by jsanger           #+#    #+#             */
-/*   Updated: 2023/10/06 13:01:10 by jsanger          ###   ########.fr       */
+/*   Created: 2023/12/08 21:55:50 by jsanger           #+#    #+#             */
+/*   Updated: 2023/12/09 01:59:11 by jsanger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/philo.h"
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
-	int	i;
-	int	num;
-	int	n_p;
+	int		i;
+	long	num;
+	int		n_p;
 
 	i = 0;
 	num = 0;
@@ -27,6 +27,8 @@ int	ft_atoi(const char *str)
 	if (str[i] == '+' || str[i] == '-')
 		if (str[i++] == '-')
 			n_p = -1;
+	if (!(str[i] >= '0' && str[i] <= '9'))
+		return (-1);
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		num = num * 10 + (str[i] - '0');
@@ -35,13 +37,22 @@ int	ft_atoi(const char *str)
 	return (n_p * num);
 }
 
-// int main()
-// {
-//     char charNumber1[] = "-100";
-//     char charNumber2[] = "-100";
-//     int number1 = ft_atoi(charNumber1);
-//     int number2 = atoi(charNumber2);
-//     int sum = number1 + number2;
-//     printf("%i + %i  = %i\n", number1, number2, sum);
-//     return(0);
-// }
+int	ft_usleep(unsigned long time)
+{
+	unsigned long long	start;
+
+	start = get_time();
+	while ((get_time() - start) < time)
+		usleep(time / 10);
+	return (0);
+}
+
+int	ft_strcmp(char *s1, char *s2)
+{
+	int	i;
+
+	i = 0;
+	while (s1[i] != '\0' && (s1[i] == s2[i]))
+		i++;
+	return (s1[i] - s2[i]);
+}
