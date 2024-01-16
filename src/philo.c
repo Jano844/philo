@@ -6,7 +6,7 @@
 /*   By: jsanger <jsanger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 21:55:10 by jsanger           #+#    #+#             */
-/*   Updated: 2023/12/09 14:23:00 by jsanger          ###   ########.fr       */
+/*   Updated: 2024/01/16 15:34:38 by jsanger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,3 @@ int	main(int argc, char **argv)
 	ft_exit(&data);
 	return (0);
 }
-// system("leaks philo");

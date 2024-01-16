@@ -6,7 +6,7 @@
 /*   By: jsanger <jsanger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 21:55:38 by jsanger           #+#    #+#             */
-/*   Updated: 2023/12/09 01:06:59 by jsanger          ###   ########.fr       */
+/*   Updated: 2024/01/16 15:13:20 by jsanger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	init_philos(t_data *data)
 		data->philos[i].eat_cont = 0;
 		data->philos[i].eating = 0;
 		data->philos[i].status = 0;
+		data->philos[i].last_meal = get_time();
 		pthread_mutex_init(&data->philos[i].lock, NULL);
 	}
 }
