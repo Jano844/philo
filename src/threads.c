@@ -6,7 +6,7 @@
 /*   By: jsanger <jsanger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 21:55:44 by jsanger           #+#    #+#             */
-/*   Updated: 2024/01/16 15:31:14 by jsanger          ###   ########.fr       */
+/*   Updated: 2024/01/16 22:13:17 by jsanger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,20 +42,25 @@ void	checker(t_data *data)
 	unsigned long	now;
 	long long		time;
 
-	i = 0;
 	while (data->done != 1)
 	{
 		if (data->finished >= data->philo_num)
-			data->done = 1;
-		now = get_time();
-		pthread_mutex_lock(&data->philos[i].lock);
-		time = now - data->philos[i].last_meal;
-		pthread_mutex_unlock(&data->philos[i].lock);
-		while (time > (long long)data->death_time)
 		{
-			messages("died", &data->philos[i]);
 			data->done = 1;
-			break ;
+			return ;
+		}
+		i = 0;
+		while (i < data->philo_num)
+		{
+			now = get_time();
+			time = now - data->philos[i].last_meal;
+			if (time >= (long long)data->death_time)
+			{
+				messages("died", &data->philos[i]);
+				data->done = 1;
+				return ;
+			}
+			i++;
 		}
 		if (data->done == 1)
 			return ;
@@ -67,14 +72,12 @@ void	*routine(void *philo_pointer)
 	t_philo	*philo;
 
 	philo = (t_philo *) philo_pointer;
-	while (1)
+	while (philo->data->done != 1)
 	{
-		if (philo->eat_cont == philo->data->meals_nb)
+		if (philo->eat_cont == philo->data->meals_nb - 1)
 			philo->data->finished++;
 		eat(philo);
 		sleeping_and_thinking(philo);
-		if (philo->data->done == 1)
-			return (NULL);
 	}
 	return (NULL);
 }
@@ -95,7 +98,7 @@ int	threads(t_data *data)
 	{
 		if (pthread_create(&data->tid[i], NULL, &routine, &data->philos[i]))
 			return (error("Error creating threads", data));
-		usleep(1000);
+		usleep(100);
 	}
 	checker(data);
 	i = -1;

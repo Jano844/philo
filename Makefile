@@ -2,7 +2,7 @@ NAME				=	philo
 
 COMPILE				=	cc
 
-FLAGS				=	-Wall -Wextra -Werror
+FLAGS				=	-Wall -Wextra -Werror -o3
 
 # LINUXFLAGS			=	-pthread
 

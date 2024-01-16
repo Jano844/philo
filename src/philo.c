@@ -6,7 +6,7 @@
 /*   By: jsanger <jsanger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 21:55:10 by jsanger           #+#    #+#             */
-/*   Updated: 2024/01/16 15:34:38 by jsanger          ###   ########.fr       */
+/*   Updated: 2024/01/16 20:46:06 by jsanger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,7 @@ int	only_one_philo(t_data *data)
 	data->start_time = get_time();
 	if (pthread_create(&data->tid[0], NULL, &routine, &data->philos[0]))
 		return (error("Error creating threads", data));
-	pthread_detach(data->tid[0]);
-	while (data->dead == 0)
-		ft_usleep(1);
+	checker(data);
 	ft_exit(data);
 	return (0);
 }

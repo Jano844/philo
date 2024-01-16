@@ -6,7 +6,7 @@
 /*   By: jsanger <jsanger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 21:55:50 by jsanger           #+#    #+#             */
-/*   Updated: 2023/12/09 01:59:11 by jsanger          ###   ########.fr       */
+/*   Updated: 2024/01/16 21:10:08 by jsanger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	ft_usleep(unsigned long time)
 
 	start = get_time();
 	while ((get_time() - start) < time)
-		usleep(time / 10);
+		usleep(time);
 	return (0);
 }
 

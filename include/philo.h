@@ -6,7 +6,7 @@
 /*   By: jsanger <jsanger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 21:56:19 by jsanger           #+#    #+#             */
-/*   Updated: 2024/01/16 14:48:50 by jsanger          ###   ########.fr       */
+/*   Updated: 2024/01/16 20:45:43 by jsanger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ unsigned long	get_time(void);
 int				ft_usleep(unsigned long time);
 void			eat(t_philo *philo);
 void			*routine(void *philo_pointer);
+void			checker(t_data *data);
 
 // utils
 long			ft_atoi(const char *str);

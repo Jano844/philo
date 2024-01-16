@@ -6,7 +6,7 @@
 /*   By: jsanger <jsanger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 21:55:31 by jsanger           #+#    #+#             */
-/*   Updated: 2024/01/16 15:23:54 by jsanger          ###   ########.fr       */
+/*   Updated: 2024/01/16 21:58:57 by jsanger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,13 @@ void	eat(t_philo *philo)
 {
 	pthread_mutex_lock(philo->right_fork);
 	messages("has taken a fork", philo);
+	if (philo->data->philo_num == 1)
+	{
+		while (philo->data->done != 1)
+			ft_usleep(1);
+		pthread_mutex_unlock(philo->right_fork);
+		return ;
+	}
 	pthread_mutex_lock(philo->left_fork);
 	messages("has taken a fork", philo);
 	pthread_mutex_lock(&philo->lock);
