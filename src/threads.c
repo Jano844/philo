@@ -6,7 +6,7 @@
 /*   By: jsanger <jsanger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 21:55:44 by jsanger           #+#    #+#             */
-/*   Updated: 2024/01/16 22:13:17 by jsanger          ###   ########.fr       */
+/*   Updated: 2024/01/17 00:33:44 by jsanger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	*surveillance(void *data_pointer)
 void	checker(t_data *data)
 {
 	int				i;
-	unsigned long	now;
 	long long		time;
 
 	while (data->done != 1)
@@ -49,18 +48,16 @@ void	checker(t_data *data)
 			data->done = 1;
 			return ;
 		}
-		i = 0;
-		while (i < data->philo_num)
+		i = -1;
+		while (++i < data->philo_num)
 		{
-			now = get_time();
-			time = now - data->philos[i].last_meal;
+			time = get_time() - data->philos[i].last_meal;
 			if (time >= (long long)data->death_time)
 			{
 				messages("died", &data->philos[i]);
 				data->done = 1;
 				return ;
 			}
-			i++;
 		}
 		if (data->done == 1)
 			return ;
