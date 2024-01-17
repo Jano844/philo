@@ -6,7 +6,7 @@
 /*   By: jsanger <jsanger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 21:55:44 by jsanger           #+#    #+#             */
-/*   Updated: 2024/01/17 19:23:50 by jsanger          ###   ########.fr       */
+/*   Updated: 2024/01/17 19:39:46 by jsanger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	*surveillance(void *data_pointer)
 {
 	t_philo	*philo;
 
-	philo = (t_philo *) data_pointer;
+	philo = (t_philo *)data_pointer;
 	while (philo->data->done == 0)
 	{
 		pthread_mutex_lock(&philo->lock);
@@ -38,8 +38,8 @@ void	*surveillance(void *data_pointer)
 
 void	checker(t_data *data)
 {
-	int				i;
-	long long		time;
+	int			i;
+	long long	time;
 
 	while (data->done != 1)
 	{
@@ -68,7 +68,7 @@ void	*routine(void *philo_pointer)
 {
 	t_philo	*philo;
 
-	philo = (t_philo *) philo_pointer;
+	philo = (t_philo *)philo_pointer;
 	while (philo->data->done != 1)
 	{
 		if (philo->eat_cont == philo->data->meals_nb)
