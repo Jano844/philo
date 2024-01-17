@@ -6,7 +6,7 @@
 /*   By: jsanger <jsanger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 21:55:10 by jsanger           #+#    #+#             */
-/*   Updated: 2024/01/17 17:00:54 by jsanger          ###   ########.fr       */
+/*   Updated: 2024/01/17 17:12:47 by jsanger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,19 @@
 // picks up one fork, cant pick um an other, because there is only one
 // philo waits until he is dead
 // thread gets detached.
+
+void	init_struct(t_data *data)
+{
+	data->philo_num = 0;
+	data->meals_nb = 0;
+	data->finished = 0;
+	data->done = 0;
+	data->death_time = 0;
+	data->eat_time = 0;
+	data->sleep_time = 0;
+	data->start_time = 0;;
+}
+
 int	only_one_philo(t_data *data)
 {
 	data->start_time = get_time();
@@ -36,7 +49,9 @@ int	main(int argc, char **argv)
 {
 	t_data	*data;
 
+	data = NULL;
 	data = malloc(sizeof(t_data));
+	init_struct(data);
 	if (argc != 5 && argc != 6)
 	{
 		printf("Invalid numer of arguments\n");

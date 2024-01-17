@@ -6,7 +6,7 @@
 /*   By: jsanger <jsanger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 21:56:19 by jsanger           #+#    #+#             */
-/*   Updated: 2024/01/17 16:33:23 by jsanger          ###   ########.fr       */
+/*   Updated: 2024/01/17 17:10:10 by jsanger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ typedef struct s_philo
 	pthread_mutex_t	*left_fork;
 	int				id;
 	int				eat_cont;
-	int				status;
 	int				eating;
 	unsigned long	time_to_die;
 	unsigned long	last_meal;
