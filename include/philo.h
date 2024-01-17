@@ -6,7 +6,7 @@
 /*   By: jsanger <jsanger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 21:56:19 by jsanger           #+#    #+#             */
-/*   Updated: 2024/01/17 17:10:10 by jsanger          ###   ########.fr       */
+/*   Updated: 2024/01/17 18:26:34 by jsanger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int				error(char *str, t_data *data);
 // init
 int				init(t_data *data, char **argv, int argc);
 int				init_data(t_data *data, char **argv, int argc);
-int				threads(t_data *data);
+int				threads(t_data *data, int i);
 int				input_checker(char **argv);
 
 // treads

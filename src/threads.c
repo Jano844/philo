@@ -6,7 +6,7 @@
 /*   By: jsanger <jsanger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 21:55:44 by jsanger           #+#    #+#             */
-/*   Updated: 2024/01/17 17:44:01 by jsanger          ###   ########.fr       */
+/*   Updated: 2024/01/17 18:26:11 by jsanger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,8 @@ void	*routine(void *philo_pointer)
 	return (NULL);
 }
 
-int	threads(t_data *data)
+int	threads(t_data *data, int i)
 {
-	int			i;
 	pthread_t	thread;
 
 	i = -1;
@@ -100,7 +99,7 @@ int	threads(t_data *data)
 	checker(data);
 	i = -1;
 	if (pthread_join(thread, NULL))
-			return (error("Error joining threads", data));
+		return (error("Error joining threads", data));
 	while (++i < data->philo_num)
 	{
 		if (pthread_join(data->tid[i], NULL))

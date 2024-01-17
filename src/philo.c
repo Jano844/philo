@@ -6,7 +6,7 @@
 /*   By: jsanger <jsanger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 21:55:10 by jsanger           #+#    #+#             */
-/*   Updated: 2024/01/17 17:12:47 by jsanger          ###   ########.fr       */
+/*   Updated: 2024/01/17 18:26:26 by jsanger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	init_struct(t_data *data)
 	data->death_time = 0;
 	data->eat_time = 0;
 	data->sleep_time = 0;
-	data->start_time = 0;;
+	data->start_time = 0;
 }
 
 int	only_one_philo(t_data *data)
@@ -61,7 +61,7 @@ int	main(int argc, char **argv)
 		return (1);
 	if (data->philo_num == 1)
 		return (only_one_philo(data));
-	if (threads(data))
+	if (threads(data, 0))
 		return (1);
 	ft_exit(data);
 	return (0);

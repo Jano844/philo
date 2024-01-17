@@ -4,7 +4,7 @@ COMPILE				=	cc
 
 FLAGS				=	-Wall -Wextra -Werror -o3
 
-LEAKS_SANITIZER		=	-L/Users/jsanger/Documents/LeakSanitizer/ -llsan
+# LEAKS_SANITIZER		=	-L/Users/jsanger/Documents/LeakSanitizer/ -llsan
 
 # LINUXFLAGS			=	-pthread
 
