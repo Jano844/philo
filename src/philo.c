@@ -6,7 +6,7 @@
 /*   By: jsanger <jsanger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 21:55:10 by jsanger           #+#    #+#             */
-/*   Updated: 2024/01/17 00:32:42 by jsanger          ###   ########.fr       */
+/*   Updated: 2024/01/17 17:00:54 by jsanger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,20 @@ int	only_one_philo(t_data *data)
 
 int	main(int argc, char **argv)
 {
-	t_data	data;
+	t_data	*data;
 
+	data = malloc(sizeof(t_data));
 	if (argc != 5 && argc != 6)
 	{
 		printf("Invalid numer of arguments\n");
 		return (1);
 	}
-	if (init(&data, argv, argc))
+	if (init(data, argv, argc))
 		return (1);
-	if (data.philo_num == 1)
-		return (only_one_philo(&data));
-	if (threads(&data))
+	if (data->philo_num == 1)
+		return (only_one_philo(data));
+	if (threads(data))
 		return (1);
-	ft_exit(&data);
+	ft_exit(data);
 	return (0);
 }

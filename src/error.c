@@ -6,7 +6,7 @@
 /*   By: jsanger <jsanger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 02:01:30 by jsanger           #+#    #+#             */
-/*   Updated: 2023/12/09 02:20:57 by jsanger          ###   ########.fr       */
+/*   Updated: 2024/01/17 17:00:40 by jsanger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	clear_data(t_data	*data)
 		free(data->forks);
 	if (data->philos)
 		free(data->philos);
+	free(data);
 }
 
 void	ft_exit(t_data *data)
