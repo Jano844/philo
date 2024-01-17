@@ -6,7 +6,7 @@
 /*   By: jsanger <jsanger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 21:55:44 by jsanger           #+#    #+#             */
-/*   Updated: 2024/01/17 00:33:44 by jsanger          ###   ########.fr       */
+/*   Updated: 2024/01/17 16:33:43 by jsanger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	*surveillance(void *data_pointer)
 	t_philo	*philo;
 
 	philo = (t_philo *) data_pointer;
-	while (philo->data->dead == 0)
+	while (philo->data->done == 0)
 	{
 		pthread_mutex_lock(&philo->lock);
 		if (philo->data->finished >= philo->data->philo_num)

@@ -6,7 +6,7 @@
 /*   By: jsanger <jsanger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 01:06:26 by jsanger           #+#    #+#             */
-/*   Updated: 2024/01/16 14:59:28 by jsanger          ###   ########.fr       */
+/*   Updated: 2024/01/17 16:54:11 by jsanger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,9 @@ int	init_data(t_data *data, char **argv, int argc)
 		|| (long)data->death_time < 0
 		|| (long)data->eat_time < 0 || (long)data->sleep_time < 0)
 		return (error("Error, invalid input", NULL));
-	data->dead = 0;
+	data->done = 0;
 	data->finished = 0;
+	data->start_time = 0;
 	pthread_mutex_init(&data->write, NULL);
 	pthread_mutex_init(&data->lock, NULL);
 	return (0);

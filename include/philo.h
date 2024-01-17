@@ -6,7 +6,7 @@
 /*   By: jsanger <jsanger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 21:56:19 by jsanger           #+#    #+#             */
-/*   Updated: 2024/01/16 20:45:43 by jsanger          ###   ########.fr       */
+/*   Updated: 2024/01/17 16:33:23 by jsanger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ typedef struct s_data
 	t_philo			*philos;
 	int				philo_num;
 	int				meals_nb;
-	int				dead;
 	int				finished;
 	int				done;
 	unsigned long	death_time;

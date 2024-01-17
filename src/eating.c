@@ -6,7 +6,7 @@
 /*   By: jsanger <jsanger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 21:55:31 by jsanger           #+#    #+#             */
-/*   Updated: 2024/01/16 21:58:57 by jsanger          ###   ########.fr       */
+/*   Updated: 2024/01/17 16:55:52 by jsanger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,17 @@ unsigned long	get_time(void)
 
 void	messages(char *str, t_philo *philo)
 {
-	unsigned long	time;
+	long long	time;
 
 	pthread_mutex_lock(&philo->data->write);
 	time = get_time() - philo->data->start_time;
-	if (ft_strcmp("died", str) == 0 && philo->data->dead == 0)
+	if (ft_strcmp("died", str) == 0 && philo->data->done == 0)
 	{
-		printf("%lu %d %s\n", time, philo->id, str);
-		philo->data->dead = 1;
+		printf("%lld %d %s\n", time, philo->id, str);
+		philo->data->done = 1;
 	}
-	if (!philo->data->dead)
-		printf("%lu %d %s\n", time, philo->id, str);
+	if (!philo->data->done)
+		printf("%lld %d %s\n", time, philo->id, str);
 	pthread_mutex_unlock(&philo->data->write);
 }
 
