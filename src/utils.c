@@ -6,7 +6,7 @@
 /*   By: jsanger <jsanger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 21:55:50 by jsanger           #+#    #+#             */
-/*   Updated: 2024/01/16 21:10:08 by jsanger          ###   ########.fr       */
+/*   Updated: 2024/01/17 23:01:37 by jsanger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ long	ft_atoi(const char *str)
 		num = num * 10 + (str[i] - '0');
 		i++;
 	}
+	if (n_p * num > 2147483647 || n_p * num < -2147483648)
+		return (-1);
 	return (n_p * num);
 }
 
