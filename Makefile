@@ -4,6 +4,8 @@ COMPILE				=	cc
 
 FLAGS				=	-Wall -Wextra -Werror -o3
 
+LEAKS_SANITIZER		=	-L/Users/jsanger/Documents/LeakSanitizer/ -llsan
+
 # LINUXFLAGS			=	-pthread
 
 COLOR_RESET			=	\033[0m
@@ -20,7 +22,7 @@ OBJS				=	$(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME):			$(INCLUDE) $(OBJS)
-					@$(COMPILE) $(FLAGS) -o $(NAME) $(OBJS) $(LINUXFLAGS)
+					@$(COMPILE) $(FLAGS) -o $(NAME) $(OBJS) $(LINUXFLAGS) $(LEAKS_SANITIZER)
 					@echo "$(COLOR_CYAN)Kompilierung abgeschlossen: $(NAME)$(COLOR_RESET)"
 
 %.o: %.c

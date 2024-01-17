@@ -6,7 +6,7 @@
 /*   By: jsanger <jsanger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 21:55:44 by jsanger           #+#    #+#             */
-/*   Updated: 2024/01/17 17:02:58 by jsanger          ###   ########.fr       */
+/*   Updated: 2024/01/17 17:42:18 by jsanger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,30 +81,38 @@ void	*routine(void *philo_pointer)
 
 int	threads(t_data *data)
 {
-	int			i;
-	pthread_t	thread;
+    int			i;
+    int			err;
+    pthread_t	thread;
 
-	i = -1;
-	data->start_time = get_time();
-	if (data->meals_nb > 0)
-	{
-		if (pthread_create(&thread, NULL, &surveillance, &data->philos[0]))
-			return (error("Error creating threads", data));
-	}
-	while (++i < data->philo_num)
-	{
-		if (pthread_create(&data->tid[i], NULL, &routine, &data->philos[i]))
-			return (error("Error creating threads", data));
-		usleep(100);
-	}
-	checker(data);
-	i = -1;
-	if (pthread_join(thread, NULL))
-			return (error("Error joining threads", data));
-	while (++i < data->philo_num)
-	{
-		if (pthread_join(data->tid[i], NULL))
-			return (error("Error joining threads", data));
-	}
-	return (0);
+    i = -1;
+    data->start_time = get_time();
+    if (data->meals_nb > 0)
+    {
+        if (pthread_create(&thread, NULL, &surveillance, &data->philos[0]))
+            return (error("Error creating threads", data));
+    }
+    while (++i < data->philo_num)
+    {
+        err = pthread_create(&data->tid[i], NULL, &routine, &data->philos[i]);
+        if (err)
+        {
+            while (i >= 0)
+            {
+                pthread_join(data->tid[i--], NULL); // Join all previously created threads
+            }
+            return (error("Error creating threads", data));
+        }
+        usleep(100);
+    }
+    checker(data);
+    i = -1;
+    if (pthread_join(thread, NULL))
+            return (error("Error joining threads", data));
+    while (++i < data->philo_num)
+    {
+        if (pthread_join(data->tid[i], NULL))
+            return (error("Error joining threads", data));
+    }
+    return (0);
 }
