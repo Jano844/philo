@@ -6,7 +6,7 @@
 /*   By: jsanger <jsanger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 21:55:38 by jsanger           #+#    #+#             */
-/*   Updated: 2024/01/17 17:09:53 by jsanger          ###   ########.fr       */
+/*   Updated: 2024/01/17 23:19:06 by jsanger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,7 @@ void	init_philos(t_data *data)
 	{
 		data->philos[i].data = data;
 		data->philos[i].id = i + 1;
-		data->philos[i].time_to_die = data->death_time;
 		data->philos[i].eat_cont = 0;
-		data->philos[i].eating = 0;
 		data->philos[i].last_meal = get_time();
 		pthread_mutex_init(&data->philos[i].lock, NULL);
 	}

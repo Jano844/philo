@@ -6,7 +6,7 @@
 /*   By: jsanger <jsanger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 21:56:19 by jsanger           #+#    #+#             */
-/*   Updated: 2024/01/17 18:26:34 by jsanger          ###   ########.fr       */
+/*   Updated: 2024/01/17 23:19:11 by jsanger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,11 @@
 typedef struct s_philo
 {
 	struct s_data	*data;
-	pthread_t		thread_checker;
 	pthread_mutex_t	lock;
 	pthread_mutex_t	*right_fork;
 	pthread_mutex_t	*left_fork;
 	int				id;
 	int				eat_cont;
-	int				eating;
-	unsigned long	time_to_die;
 	unsigned long	last_meal;
 }	t_philo;
 
