@@ -6,7 +6,7 @@
 /*   By: jsanger <jsanger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 21:55:44 by jsanger           #+#    #+#             */
-/*   Updated: 2024/01/17 18:26:11 by jsanger          ###   ########.fr       */
+/*   Updated: 2024/01/17 19:23:50 by jsanger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	*routine(void *philo_pointer)
 	philo = (t_philo *) philo_pointer;
 	while (philo->data->done != 1)
 	{
-		if (philo->eat_cont == philo->data->meals_nb - 1)
+		if (philo->eat_cont == philo->data->meals_nb)
 			philo->data->finished++;
 		eat(philo);
 		sleeping_and_thinking(philo);
