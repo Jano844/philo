@@ -6,7 +6,7 @@
 /*   By: jsanger <jsanger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 21:55:10 by jsanger           #+#    #+#             */
-/*   Updated: 2024/01/17 18:26:26 by jsanger          ###   ########.fr       */
+/*   Updated: 2024/01/18 02:59:42 by jsanger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,10 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	if (init(data, argv, argc))
+	{
+		free(data);
 		return (1);
+	}
 	if (data->philo_num == 1)
 		return (only_one_philo(data));
 	if (threads(data, 0))
